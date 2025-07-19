@@ -35,7 +35,15 @@
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
                 <DataTemplate DataType="{x:Type vm:TabItemViewModel}">
-                    <editor:TextEditor Text="{Binding Text, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                    <editor:TextEditor x:Name="Editor"
+                                      Text="{Binding Text, Mode=TwoWay}"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch" />
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Header}" Value="＋">
+                            <Setter TargetName="Editor" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </TabControl.ContentTemplate>
         </TabControl>
