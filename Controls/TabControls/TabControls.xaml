@@ -13,7 +13,9 @@
                 <DataTemplate DataType="{x:Type vm:TabItemViewModel}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Header}" />
-                        <Button Content="×" Command="{Binding CloseTabCommand}" />
+                        <Button Content="×"
+                                Command="{Binding DataContext.CloseTabCommand, RelativeSource={RelativeSource AncestorType=local:TabControls}}"
+                                CommandParameter="{Binding}" />
                     </StackPanel>
                 </DataTemplate>
             </TabControl.ItemTemplate>
