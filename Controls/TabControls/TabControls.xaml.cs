@@ -8,7 +8,6 @@ using Utils;
 namespace Controls{
     // タブの追加・削除・選択のみを管理するコントロール。
     public partial class TabControls : UserControl{
-        private ObservableCollection<TabItemViewModel> tabs { get; } = new ObservableCollection<TabItemViewModel>();
 
         public TabItemViewModel SelectedTab{
             get { return (TabItemViewModel)GetValue(SelectedTabProperty); }
