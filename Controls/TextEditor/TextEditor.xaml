@@ -9,6 +9,7 @@
                  HorizontalScrollBarVisibility="Auto"
                  FontFamily="Consolas"
                  FontSize="14"
-                 TextWrapping="NoWrap"/>
+                 TextWrapping="NoWrap"
+                 Text="{Binding Text, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" />
     </Grid>
 </UserControl>
