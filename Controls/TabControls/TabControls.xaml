@@ -9,6 +9,16 @@
                     SelectedItem="{Binding SelectedTab}"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
+            <TabControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </TabControl.ItemsPanel>
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="TabItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </TabControl.ItemContainerStyle>
             <TabControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type vm:TabItemViewModel}">
                     <StackPanel Orientation="Horizontal">
@@ -23,13 +33,11 @@
                     </DataTemplate.Triggers>
                 </DataTemplate>
             </TabControl.ItemTemplate>
-<!--
             <TabControl.ContentTemplate>
                 <DataTemplate DataType="{x:Type vm:TabItemViewModel}">
-                    <editor:TextEditor Text="{Binding Text, Mode=TwoWay}" />
+                    <editor:TextEditor Text="{Binding Text, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                 </DataTemplate>
             </TabControl.ContentTemplate>
--->
         </TabControl>
     </Grid>
 </UserControl>
