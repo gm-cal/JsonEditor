@@ -14,11 +14,6 @@ namespace Controls{
 
         public TextEditor(){
             InitializeComponent();
-            // Initialize the textBox if it is defined in XAML with x:Name="textBox"
-            textBox = (this.FindName("textBox") as TextBox)!;
-            if (textBox == null){
-                throw new System.InvalidOperationException("TextBox with x:Name='textBox' was not found in the XAML.");
-            }
         }
 
         // テキストボックスの内容を取得
