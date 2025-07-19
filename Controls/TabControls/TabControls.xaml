@@ -23,10 +23,14 @@
                 <DataTemplate DataType="{x:Type vm:TabItemViewModel}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Header}" />
-                        <Button Content="×"
-                                Command="{Binding DataContext.CloseTabCommand, RelativeSource={RelativeSource AncestorType=local:TabControls}}"
-                                CommandParameter="{Binding}" />
+                        <Button x:Name="CloseButton" Content="×"
+                                Command="{Binding CloseTabCommand, RelativeSource={RelativeSource AncestorType=local:TabControls}}" />
                     </StackPanel>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Header}" Value="＋">
+                            <Setter TargetName="CloseButton" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
