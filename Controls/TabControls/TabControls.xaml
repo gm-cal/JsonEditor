@@ -1,0 +1,29 @@
+<UserControl x:Class="Controls.TabControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Controls"
+             xmlns:vm="clr-namespace:ViewModels"
+             xmlns:editor="clr-namespace:Controls">
+    <Grid>
+        <TabControl ItemsSource="{Binding Tabs}"
+                    SelectedItem="{Binding SelectedTab}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+            <TabControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type vm:TabItemViewModel}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Header}" />
+                        <Button Content="×" Command="{Binding CloseTabCommand}" />
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+<!--
+            <TabControl.ContentTemplate>
+                <DataTemplate DataType="{x:Type vm:TabItemViewModel}">
+                    <editor:TextEditor Text="{Binding Text, Mode=TwoWay}" />
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+-->
+        </TabControl>
+    </Grid>
+</UserControl>

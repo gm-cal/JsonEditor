@@ -1,0 +1,36 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:Controls"
+        Title="JSON Editor" Height="600" Width="800">
+    <DockPanel>
+        <!-- ツールバー -->
+        <ToolBar DockPanel.Dock="Top">
+            <Button Content="変換" Command="{Binding ConvertCommand}" />
+            <Button Content="整形" Command="{Binding PrettyPrintCommand}" />
+            <Button Content="圧縮" Command="{Binding MinifyCommand}" />
+            <ComboBox SelectedItem="{Binding IndentOption}">
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>Tab</ComboBoxItem>
+            </ComboBox>
+        </ToolBar>
+
+        <!-- エディタ: タブ管理をTabTextEditorコントロールに集約 -->
+        <controls:TabControls
+            Tabs="{Binding Tabs}"
+            SelectedTab="{Binding SelectedTab}">
+            <controls:TabControls.Resources>
+                <Style TargetType="controls:TextEditor">
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Style>
+            </controls:TabControls.Resources>
+        </controls:TabControls>
+
+        <!-- ステータスバー -->
+        <StatusBar DockPanel.Dock="Bottom">
+            <TextBlock Text="{Binding StatusMessage}" />
+        </StatusBar>
+    </DockPanel>
+</Window>
